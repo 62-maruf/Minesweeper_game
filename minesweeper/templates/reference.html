@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% set page = "reference" %}
+
+{% block content %}
+<div class="box">
+  <h2>How to Play</h2>
+  <ol>
+    <li>The board is 16 x 16 with 40 hidden mines.</li>
+    <li><b>Left click</b> a box to open it. Your first click is always safe.</li>
+    <li>A number shows how many mines touch that box (including diagonals).</li>
+    <li>An empty box means no mines nearby, so its neighbors open automatically.</li>
+    <li><b>Right click</b> a box to place or remove a red flag 🚩 where you think a mine is.</li>
+    <li>Open a mine and you lose. Open every safe box and you win.</li>
+  </ol>
+</div>
+
+<div class="box">
+  <h2>Tips</h2>
+  <ul>
+    <li>If a "1" has only one closed box next to it, that box is a mine.</li>
+    <li>If a number already has enough flags around it, the other neighbors are safe.</li>
+    <li>Start in a corner or edge, where there are fewer neighbors to guess.</li>
+  </ul>
+</div>
+
+<div class="box">
+  <h2>How This Game Is Built</h2>
+  <ul>
+    <li><b>Flask (app.py):</b> keeps the board, places mines, counts neighbors and checks win/lose.</li>
+    <li><b>HTML + JavaScript (index.html):</b> draws the buttons and sends clicks to Flask with fetch().</li>
+    <li><b>Flood fill:</b> opening a "0" box uses a stack to open all connected empty boxes.</li>
+    <li>Want to learn more? See the <a href="https://flask.palletsprojects.com/" target="_blank">Flask docs</a> and
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">MDN fetch guide</a>.</li>
+  </ul>
+</div>
+{% endblock %}
