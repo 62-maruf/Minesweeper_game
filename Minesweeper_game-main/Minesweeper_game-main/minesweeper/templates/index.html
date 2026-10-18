@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% set page = "game" %}
+
+{% block style %}
+  #status { text-align: center; font-weight: bold; }
+  #board { text-align: center; line-height: 0; }
+  #board button { width: 30px; height: 30px; margin: 0; padding: 0; border: 1px solid #999; background: #ddd; font-weight: bold; font-size: 16px; cursor: pointer; }
+  #board button:disabled { background: #f8f8f8; cursor: default; }
+  .n1 { color: blue; } .n2 { color: green; } .n3 { color: red; } .n4 { color: navy; }
+  .n5, .n6, .n7, .n8 { color: maroon; }
+  .new { display: block; margin: 0 auto 10px; padding: 6px 16px; }
+{% endblock %}
+
+{% block content %}
+<div class="box">
+  <p id="status">Playing...</p>
+  <button class="new" onclick="call('/new')">New Game</button>
+  <div id="board"></div>
+</div>
+
+<script>
+async function call(url, r, c) {
+  const res = await fetch(url, r === undefined ? {} : {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({r, c})
+  });
+  draw(await res.json());
+}
+
+function draw(d) {
+  const board = document.getElementById("board");
+  board.innerHTML = "";
+  d.board.forEach((row, r) => {
+    row.forEach((cell, c) => {
+      const b = document.createElement("button");
+      b.textContent = cell === 0 ? "" : cell;
+      b.className = "n" + cell;
+      b.disabled = cell !== "" && cell !== "🚩" || d.over;
+      b.onclick = () => call("/open", r, c);
+      b.oncontextmenu = e => { e.preventDefault(); call("/flag", r, c); };
+      board.appendChild(b);
+    });
+    board.appendChild(document.createElement("br"));
+  });
+  document.getElementById("status").textContent =
+    d.won ? "You won!" : d.over ? "Game over!" : "Playing...";
+}
+
+call("/new");
+</script>
+{% endblock %}

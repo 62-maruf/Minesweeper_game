@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% set page = "about" %}
+
+{% block content %}
+<div class="box">
+  <h2>About / সম্পর্কে</h2>
+  <p>Minesweeper is a puzzle game. Open all safe boxes without touching a hidden mine.<br>
+     মাইনসুইপার একটি পাজল গেম। লুকানো মাইনে না লেগে সব নিরাপদ ঘর খুলতে হবে।</p>
+</div>
+
+<div class="box">
+  <h2>How to Play / কীভাবে খেলবেন</h2>
+  <ol>
+    <li><b>Step 1:</b> The board is 16 x 16 with 40 hidden mines.<br>
+        বোর্ডটি ১৬ x ১৬ এবং এতে ৪০টি লুকানো মাইন আছে।</li>
+    <li><b>Step 2:</b> <b>Left click</b> a box to open it. Your first click is always safe.<br>
+        একটি ঘরে <b>বাম ক্লিক</b> করে সেটি খুলুন। আপনার প্রথম ক্লিক সবসময় নিরাপদ।</li>
+    <li><b>Step 3:</b> A number shows how many mines touch that box (including diagonals).<br>
+        ঘরের সংখ্যাটি বলে দেয় তার আশেপাশে (কোনাকুনিসহ) কয়টি মাইন আছে।</li>
+    <li><b>Step 4:</b> An empty box means no mines nearby, so its neighbors open automatically.<br>
+        খালি ঘরের মানে আশেপাশে কোনো মাইন নেই, তাই পাশের ঘরগুলো নিজে থেকেই খুলে যায়।</li>
+    <li><b>Step 5:</b> <b>Right click</b> a box to place or remove a red flag 🚩 where you think a mine is.<br>
+        যেখানে মাইন আছে বলে মনে করেন সেখানে <b>ডান ক্লিক</b> করে লাল পতাকা 🚩 বসান বা সরান।</li>
+    <li><b>Step 6:</b> Use the numbers and flags to find the mines. Never open a flagged box.<br>
+        সংখ্যা ও পতাকা দেখে মাইন খুঁজে বের করুন। পতাকা দেওয়া ঘর খুলবেন না।</li>
+    <li><b>Step 7:</b> Open a mine and you lose. Open every safe box and you win!<br>
+        মাইন খুললে আপনি হেরে যাবেন। সব নিরাপদ ঘর খুলতে পারলে আপনি জিতবেন!</li>
+  </ol>
+</div>
+
+<div class="box">
+  <h2>Tips / পরামর্শ</h2>
+  <ul>
+    <li>If a "1" has only one closed box next to it, that box is a mine.<br>
+        কোনো "১"-এর পাশে মাত্র একটি বন্ধ ঘর থাকলে সেটিই মাইন।</li>
+    <li>If a number already has enough flags around it, the other neighbors are safe.<br>
+        কোনো সংখ্যার পাশে যথেষ্ট পতাকা থাকলে বাকি ঘরগুলো নিরাপদ।</li>
+    <li>Start in a corner or edge, where there are fewer neighbors to guess.<br>
+        কোণা বা কিনারা থেকে শুরু করুন, সেখানে আন্দাজ করার ঘর কম।</li>
+  </ul>
+</div>
+{% endblock %}

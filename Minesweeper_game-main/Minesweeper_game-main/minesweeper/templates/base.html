@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Minesweeper</title>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+<style>
+  body { font-family: Arial, sans-serif; background: #f2f2f2; max-width: 560px; margin: 20px auto; padding: 0 10px; }
+  h1, h2 { text-align: center; }
+  nav { text-align: center; margin-bottom: 15px; }
+  nav a { margin: 0 10px; text-decoration: none; color: #333; font-weight: bold; padding: 4px 10px; border-radius: 4px; }
+  nav a.active { background: #ddd; }
+  .box { background: #fff; border: 1px solid #ccc; border-radius: 6px; padding: 12px; margin-bottom: 15px; }
+  li { margin-bottom: 4px; }
+  {% block style %}{% endblock %}
+</style>
+</head>
+<body>
+<h1>Minesweeper</h1>
+<nav>
+  <a href="/" class="{{ 'active' if page == 'game' }}">Game</a>
+  <a href="/about" class="{{ 'active' if page == 'about' }}">About</a>
+</nav>
+{% block content %}{% endblock %}
+</body>
+</html>
